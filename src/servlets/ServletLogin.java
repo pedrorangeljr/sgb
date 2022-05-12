@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.Session;
 
 import model.ModelLogin;
 
 
-@WebServlet("/ServletLogin")
+@WebServlet(urlPatterns = {"/principal/ServletLogin", "/ServletLogin"})
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,6 +36,7 @@ public class ServletLogin extends HttpServlet {
 			
 			String login = request.getParameter("login");
 			String senha = request.getParameter("senha");
+			String url = request.getParameter("url");
 			
 			if(login != null && !login.isEmpty() && senha !=null  && !senha.isEmpty()) {
 				
@@ -49,13 +49,17 @@ public class ServletLogin extends HttpServlet {
 					
 					request.getSession().setAttribute("usuario", modelLogin.getLogin());
 					
-					RequestDispatcher dispatcher = request.getRequestDispatcher("principal/principal.jsp");
+					if (url == null || url.equals("null")) {
+						url = "principal/principal.jsp";
+					}
+					
+					RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 					dispatcher.forward(request, response);
 					
 				}
 				else {
 					
-					RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 					request.setAttribute("msg", "Informe Login e/ou Senha corretamente");
 					dispatcher.forward(request, response);
 				}
