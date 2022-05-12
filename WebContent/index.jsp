@@ -8,7 +8,23 @@
 </head>
 <body>
      
-    
+    <form method="post" action="ServletLogin">
      
+     <label>Login:</label>
+     <br/>
+     <input type="text" name="login" id="login">
+     <br/>
+     
+      <label>Senha:</label>
+     <br/>
+     <input type="password" name="senha" id="senha">
+     <br/>
+     <br/>
+     
+     <input type="submit" value="Logar">
+     <br/> 
+    </form>
+    
+     <h3>${msg }</h3>
 </body>
 </html>
