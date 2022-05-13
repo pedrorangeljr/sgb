@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+
+.content {
+
+     margin-top: 20px;
+}
+
+.card {
+     
+     margin-top: 50px;
+     margin-left: 300px;
+
+     height: 450px;
+     width: 900px;
+}
+
+h5 {
+
+     margin-top: 50px;
+     margin-left: 230px;
+}
+
+.col-md-6 {
+
+     margin-top: 30px;
+     margin-left: 200px;
+     width: 900px;
+}
+
+.btn {
+
+     margin-top: 30px;
+     width: 250px;
+}
