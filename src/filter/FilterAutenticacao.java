@@ -67,6 +67,10 @@ public class FilterAutenticacao implements Filter {
 		} catch (Exception e) {
 
 			e.printStackTrace();
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("erro.jsp");
+			request.setAttribute("msg", e.getMessage());
+			dispatcher.forward(request, response);
 
 			try {
 
