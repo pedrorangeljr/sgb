@@ -9,17 +9,15 @@
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="" class="simple-text logo-normal">
           Creative Tim
-          <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
-          </div> -->
+          
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./dashboard.html">
+            <a href="<%= request.getContextPath()%>/principal/principal.jsp">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
@@ -37,7 +35,7 @@
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="<%= request.getContextPath()%>/principal/funcionarios.jsp">
               <i class=" nc-icon nc-badge"></i>
               <p>funcionarios</p>
             </a>
@@ -58,12 +56,6 @@
             <a href="./typography.html">
               <i class="nc-icon nc-caps-small"></i>
               <p>Typography</p>
-            </a>
-          </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
             </a>
           </li>
         </ul>
