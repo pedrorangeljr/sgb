@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 
 <html lang="en">
 
-<!-- Início head -->
+<!-- InÃ­cio head -->
 
  <jsp:include page="head.jsp"></jsp:include>
 
@@ -14,7 +14,7 @@
 <body class="">
   <div class="wrapper ">
     
-    <!-- Início sidebar -->
+    <!-- InÃ­cio sidebar -->
        
        <jsp:include page="sidebar.jsp"></jsp:include>
     
@@ -29,7 +29,7 @@
       <!-- End Navbar -->
       
       <div class="content">
-        <!-- Início Card -->
+        <!-- InÃ­cio Card -->
           
           <jsp:include page="card.jsp"></jsp:include>
           
@@ -41,7 +41,7 @@
         
        </div>
        
-       <!-- Início footer -->
+       <!-- InÃ­cio footer -->
    
           
           
@@ -56,4 +56,3 @@
 </body>
 
 </html>
-   
