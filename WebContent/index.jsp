@@ -57,7 +57,7 @@
                   </div>
                   <div class="row">
                     <div class="update ml-auto mr-auto">
-                      <button type="submit" class="btn btn-primary btn-round">Logar</button>
+                      <button type="submit" class="btn btn-success btn-round">Logar</button>
                     </div>
                   </div>
             </div>

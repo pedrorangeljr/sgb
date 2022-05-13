@@ -46,9 +46,9 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="ServletLogin?acao=logout">Sair</a>
+                  <a class="dropdown-item" href="ServletLogin?acao=logout">Trocar de Usuário</a>
+                  
                 </div>
               </li>
               <li class="nav-item">
