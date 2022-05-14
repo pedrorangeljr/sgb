@@ -59,13 +59,16 @@
                     <div class="update ml-auto mr-auto">
                       <button type="submit" class="btn btn-success btn-round">Logar</button>
                     </div>
+                    
                   </div>
+                  
+                 <div class="auth-option text-center pt-5">Sem conta? Assine  <a class="text-link" href="" > Aqui</a>.</div>
             </div>
           </div>
         </div>
         
         </form>
-        
+              
         <h3>${msg }</h3>
         </div>
         </div>

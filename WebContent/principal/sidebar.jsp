@@ -3,15 +3,14 @@
 
   <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+        <a  class="simple-text logo-mini">
           <div class="logo-image-small">
             <img src="<%= request.getContextPath() %>/assets/img/logo-small.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="" class="simple-text logo-normal">
-          Creative Tim
-          
+        <a  class="simple-text logo-normal">
+          <%= session.getAttribute("usuario") %>     
         </a>
       </div>
       <div class="sidebar-wrapper">
