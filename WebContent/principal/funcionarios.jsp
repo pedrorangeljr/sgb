@@ -42,13 +42,13 @@
                     <div class="col-md-5 pr-1">
                       <div class="form-group">
                         <label>ID</label>
-                        <input type="text" class="form-control" disabled="">
+                        <input type="text" class="form-control" disabled="" id="idFuncionario" name="idFuncionario">
                       </div>
                     </div>
                     <div class="col-md-3 px-1">
                       <div class="form-group">
                         <label>Nome</label>
-                        <input type="text" class="form-control" placeholder="name" name="id" id="id" >
+                        <input type="text" class="form-control" placeholder="name" name="nome" id="nome" >
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
