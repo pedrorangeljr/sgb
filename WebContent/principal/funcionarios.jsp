@@ -37,24 +37,24 @@
                 <h5 class="card-title">Cadastro de Funcionarios</h5>
               </div>
               <div class="card-body">
-                <form method="post" action="">
+                <form method="post" action="<%= request.getContextPath()%>/ServletFuncionario">
                   <div class="row">
                     <div class="col-md-5 pr-1">
                       <div class="form-group">
                         <label>ID</label>
-                        <input type="text" class="form-control" disabled="" id="idFuncionario" name="idFuncionario">
+                        <input type="text" class="form-control" disabled="" id="idFuncionario" name="idFuncionario" value="${mf.idFuncionario }">
                       </div>
                     </div>
                     <div class="col-md-3 px-1">
                       <div class="form-group">
                         <label>Nome</label>
-                        <input type="text" class="form-control" placeholder="name" name="nome" id="nome" >
+                        <input type="text" class="form-control" placeholder="name" name="nome" id="nome" value="${mf.nome }" >
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Telefone</label>
-                        <input type="text" class="form-control" placeholder="telefone" name="telefone" id="telefone">
+                        <input type="text" class="form-control" placeholder="telefone" name="telefone" id="telefone" value="${mf.telefone }">
                       </div>
                     </div>
                   </div>
@@ -62,13 +62,13 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Login</label>
-                        <input type="text" class="form-control" placeholder="login" name="login" id="login"> 
+                        <input type="text" class="form-control" placeholder="login" name="login" id="login" value="${mf.login }"> 
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Senha</label>
-                        <input type="password" class="form-control" placeholder="senha" name="senha" id="senha">
+                        <input type="password" class="form-control" placeholder="senha" name="senha" id="senha" value="${mf.senha }">
                       </div>
                     </div>
                   </div>
@@ -76,13 +76,13 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>CPF</label>
-                        <input type="text" class="form-control" placeholder="cpf" name="cpf" id="cpf"> 
+                        <input type="text" class="form-control" placeholder="cpf" name="cpf" id="cpf" value="${mf.cpf }"> 
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Cep</label>
-                        <input type="text" class="form-control" placeholder="cep" name="cep" id="cep">
+                        <input type="text" class="form-control" placeholder="cep" name="cep" id="cep" value="${mf.cep }">
                       </div>
                     </div>
                   </div>
@@ -90,13 +90,13 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Logradouro</label>
-                        <input type="text" class="form-control" placeholder="logradouro" name="logradouro" id="logradouro">
+                        <input type="text" class="form-control" placeholder="logradouro" name="logradouro" id="logradouro" value="${mf.logradouro }">
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Número</label>
-                        <input type="text" class="form-control" placeholder="numero" name="logradouro" id="logradouro">
+                        <input type="text" class="form-control" placeholder="numero" name="numero" id="numero" value="${mf.numero }">
                       </div>
                     </div>
                   </div>
@@ -106,19 +106,19 @@
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label>Bairro</label>
-                        <input type="text" class="form-control" placeholder="bairro" name="bairro" id="bairro">
+                        <input type="text" class="form-control" placeholder="bairro" name="bairro" id="bairro" value="${mf.bairro }">
                       </div>
                     </div>
                     <div class="col-md-4 px-1">
                       <div class="form-group">
                         <label>Cidade</label>
-                        <input type="text" class="form-control" placeholder="cidade" name="cidade" id="cidade">
+                        <input type="text" class="form-control" placeholder="cidade" name="cidade" id="cidade" value="${mf.cidade }">
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label>UF</label>
-                        <input type="text" class="form-control" placeholder="uf" name="uf" id="uf">
+                        <input type="text" class="form-control" placeholder="uf" name="uf" id="uf" value="${mf.uf }">
                       </div>
                     </div>
                   </div>

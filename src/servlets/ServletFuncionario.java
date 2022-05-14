@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +48,7 @@ public class ServletFuncionario extends HttpServlet {
 			
 			ModelFuncionario mf = new ModelFuncionario(); // mf = objeto modelFuncionario
 			
-			
+			mf.setIdFuncionario(idFuncionario != null && !idFuncionario.isEmpty() ? Long.parseLong(idFuncionario) : null);
 			mf.setNome(nome);
 			mf.setTelefone(telefone);
 			mf.setLogin(login);
@@ -59,8 +61,10 @@ public class ServletFuncionario extends HttpServlet {
 			mf.setCidade(cidade);
 			mf.setUf(uf);
 			
+			request.setAttribute("mf", mf);
 			
-			
+			request.getRequestDispatcher("principal/funcionarios.jsp").forward(request, response);
+		
 			
 		}catch(Exception e) {
 			
