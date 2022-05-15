@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import connection.SingleConnection;
 import model.ModelFuncionario;
@@ -17,7 +18,7 @@ public class DAOFuncionarioRepository {
 	
 	/*Metodo Salvar*/
 	
-	public void gravarFuncionario(ModelFuncionario mf) {
+	public ModelFuncionario gravarFuncionario(ModelFuncionario mf) throws Exception {
 		
 		try {
 			
@@ -47,5 +48,35 @@ public class DAOFuncionarioRepository {
 			
 		}
 		
+		/*Já faz a consulta depois que grava*/
+		return this.consultafuncionario(mf.getLogin());
+	}
+	
+	public ModelFuncionario consultafuncionario(String login) throws Exception {
+		
+		ModelFuncionario mf = new ModelFuncionario();
+		
+		String sql = "select * from TbFuncionario where upper(Login) = upper('"+login+"')";
+		PreparedStatement consulta = connection.prepareStatement(sql);
+		
+		ResultSet resultado = consulta.executeQuery();
+		
+		while(resultado.next()) {
+			
+			mf.setIdFuncionario(resultado.getLong("idFuncionario"));
+			mf.setNome(resultado.getString("Nome"));
+			mf.setTelefone(resultado.getString("Telefone"));
+			mf.setCpf(resultado.getString("Cpf"));
+			mf.setCep(resultado.getString("Cep"));
+			mf.setLogradouro(resultado.getString("Logradouro"));
+			mf.setNumero(resultado.getString("Numero"));
+			mf.setBairro(resultado.getString("Bairro"));
+			mf.setCidade(resultado.getString("Cidade"));
+			mf.setUf(resultado.getString("UF"));
+			mf.setSenha(resultado.getString("Senha"));
+			mf.setLogin(resultado.getString("Login"));
+		}
+		
+		return mf;
 	}
 }

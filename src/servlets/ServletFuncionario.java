@@ -63,7 +63,7 @@ public class ServletFuncionario extends HttpServlet {
 			mf.setCidade(cidade);
 			mf.setUf(uf);
 			
-			daoFuncionarioRepository.gravarFuncionario(mf);
+			mf = daoFuncionarioRepository.gravarFuncionario(mf);
 			
 			request.setAttribute("msg", "Operação Realizada com Sucesso");
 			request.setAttribute("mf", mf);			
