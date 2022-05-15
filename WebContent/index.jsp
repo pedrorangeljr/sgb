@@ -62,7 +62,7 @@
                     
                   </div>
                   
-                 <div class="auth-option text-center pt-5">Sem conta? Assine  <a class="text-link" href="" > Aqui</a>.</div>
+                 <div class="auth-option text-center pt-5">Ainda não tem conta ?   <a class="text-link" href="" >Cadastre-se</a>.</div>
             </div>
           </div>
         </div>

@@ -79,4 +79,26 @@ public class DAOFuncionarioRepository {
 		
 		return mf;
 	}
+	
+	public boolean validaLogin(String login) throws Exception {
+		
+		String sql = "select count(1) > 0 as existe from TbFuncionario where upper(login) = upper('"+login+"')";
+		PreparedStatement validar = connection.prepareStatement(sql);
+		
+		ResultSet resultado = validar.executeQuery();
+		
+		resultado.next();
+			
+			return resultado.getBoolean("existe");
+
+		
+
+	}
+	
+	
+	
+	
+	
+	
+	
 }

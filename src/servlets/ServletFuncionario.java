@@ -35,6 +35,8 @@ public class ServletFuncionario extends HttpServlet {
 		
 		try {
 			
+			String msg = "Operação Realizada com sucesso";
+			
 			String idFuncionario = request.getParameter("idFuncionario");
 			String nome = request.getParameter("nome");
 			String telefone = request.getParameter("telefone");
@@ -46,7 +48,7 @@ public class ServletFuncionario extends HttpServlet {
 			String numero = request.getParameter("numero");
 			String bairro = request.getParameter("bairro");
 			String cidade = request.getParameter("cidade");
-			String uf = request.getParameter("uf");
+			String uf = request.getParameter("uf");			
 			
 			ModelFuncionario mf = new ModelFuncionario(); // mf = objeto modelFuncionario
 			
@@ -63,9 +65,17 @@ public class ServletFuncionario extends HttpServlet {
 			mf.setCidade(cidade);
 			mf.setUf(uf);
 			
-			mf = daoFuncionarioRepository.gravarFuncionario(mf);
+			if(daoFuncionarioRepository.validaLogin(mf.getLogin()) && mf.getIdFuncionario() == null) {
+				
+				msg = "Já existe funcionário com o mesmo login, informe outro login";
+			}
+			else {
+				
+				mf = daoFuncionarioRepository.gravarFuncionario(mf);
+			}
 			
-			request.setAttribute("msg", "Operação Realizada com Sucesso");
+			
+			request.setAttribute("msg", msg);
 			request.setAttribute("mf", mf);			
 			request.getRequestDispatcher("principal/funcionarios.jsp").forward(request, response);
 		
