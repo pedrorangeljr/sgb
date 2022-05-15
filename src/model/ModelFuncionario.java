@@ -19,6 +19,19 @@ public class ModelFuncionario implements Serializable{
 	private String login;
 	private String senha;
 	
+	public boolean isNovo() {
+		
+		if(this.idFuncionario == null ) {
+			
+			return true; /*Grava um novo*/
+		}
+		else if(this.idFuncionario != null && this.idFuncionario > 0) {
+			
+			return false; /*Atualizar*/
+		}
+		
+		return idFuncionario == null;
+	}
 	
 	public Long getIdFuncionario() {
 		return idFuncionario;
