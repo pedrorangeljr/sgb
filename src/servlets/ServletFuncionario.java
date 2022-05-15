@@ -9,13 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.DAOFuncionarioRepository;
 import model.ModelFuncionario;
 
 
 @WebServlet("/ServletFuncionario")
 public class ServletFuncionario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
+	private DAOFuncionarioRepository daoFuncionarioRepository = new DAOFuncionarioRepository();
    
     public ServletFuncionario() {
         super();
@@ -61,8 +63,10 @@ public class ServletFuncionario extends HttpServlet {
 			mf.setCidade(cidade);
 			mf.setUf(uf);
 			
-			request.setAttribute("mf", mf);
+			daoFuncionarioRepository.gravarFuncionario(mf);
 			
+			request.setAttribute("msg", "Operação Realizada com Sucesso");
+			request.setAttribute("mf", mf);			
 			request.getRequestDispatcher("principal/funcionarios.jsp").forward(request, response);
 		
 			

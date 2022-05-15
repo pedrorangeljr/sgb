@@ -131,8 +131,9 @@
                     </div>
                   </div>
                 </form>
-              </div>
+              </div>           
             </div>
+             <span>${msg }</span>
           </div>
         </div>
         
