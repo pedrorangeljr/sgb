@@ -119,5 +119,17 @@ public class DAOFuncionarioRepository {
 		return resultado.getBoolean("existe");
 
 	}
+	
+	public void deletarFuncionario(String idFuncionario) throws Exception {
+		
+		String sql = "delete from TbFuncionario where idFuncionario = ?";
+		PreparedStatement deletar = connection.prepareStatement(sql);
+		deletar.setLong(1, Long.parseLong(idFuncionario));
+		
+		deletar.executeUpdate();
+		
+		connection.commit();
+		
+	}
 
 }

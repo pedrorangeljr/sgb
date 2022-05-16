@@ -12,31 +12,53 @@ import javax.servlet.http.HttpServletResponse;
 import dao.DAOFuncionarioRepository;
 import model.ModelFuncionario;
 
-
 @WebServlet("/ServletFuncionario")
 public class ServletFuncionario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	private DAOFuncionarioRepository daoFuncionarioRepository = new DAOFuncionarioRepository();
-   
-    public ServletFuncionario() {
-        super();
-      
-    }
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+	private DAOFuncionarioRepository daoFuncionarioRepository = new DAOFuncionarioRepository();
+
+	public ServletFuncionario() {
+		super();
+
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		try {
-			
+
+			String acao = request.getParameter("acao");
+
+			if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("deletar")) {
+
+				String idFuncionario = request.getParameter("idFuncionario");
+
+				daoFuncionarioRepository.deletarFuncionario(idFuncionario);
+
+				request.setAttribute("msg", "Deletado com Sucesso");
+
+			}
+
+			request.getRequestDispatcher("principal/funcionarios.jsp").forward(request, response);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("erro.jsp");
+			request.setAttribute("msg", e.getMessage());
+			dispatcher.forward(request, response);
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		try {
+
 			String msg = "Operação Realizada com sucesso";
-			
+
 			String idFuncionario = request.getParameter("idFuncionario");
 			String nome = request.getParameter("nome");
 			String telefone = request.getParameter("telefone");
@@ -48,11 +70,12 @@ public class ServletFuncionario extends HttpServlet {
 			String numero = request.getParameter("numero");
 			String bairro = request.getParameter("bairro");
 			String cidade = request.getParameter("cidade");
-			String uf = request.getParameter("uf");			
-			
+			String uf = request.getParameter("uf");
+
 			ModelFuncionario mf = new ModelFuncionario(); // mf = objeto modelFuncionario
-			
-			mf.setIdFuncionario(idFuncionario != null && !idFuncionario.isEmpty() ? Long.parseLong(idFuncionario) : null);
+
+			mf.setIdFuncionario(
+					idFuncionario != null && !idFuncionario.isEmpty() ? Long.parseLong(idFuncionario) : null);
 			mf.setNome(nome);
 			mf.setTelefone(telefone);
 			mf.setLogin(login);
@@ -64,33 +87,33 @@ public class ServletFuncionario extends HttpServlet {
 			mf.setBairro(bairro);
 			mf.setCidade(cidade);
 			mf.setUf(uf);
-			
-			if(daoFuncionarioRepository.validaLogin(mf.getLogin()) && mf.getIdFuncionario() == null) {
-				
+
+			if (daoFuncionarioRepository.validaLogin(mf.getLogin()) && mf.getIdFuncionario() == null) {
+
 				msg = "Já existe funcionário com o mesmo login, informe outro login";
-			}
-			else {
-				if(mf.isNovo()) {
-					
+			} else {
+				if (mf.isNovo()) {
+
 					msg = "Gravado com Sucesso";
-				}
-				else {
-					
+				} else {
+
 					msg = "Atualizado com sucesso";
 				}
-				
+
 				mf = daoFuncionarioRepository.gravarFuncionario(mf);
 			}
-			
-			
+
 			request.setAttribute("msg", msg);
-			request.setAttribute("mf", mf);			
+			request.setAttribute("mf", mf);
 			request.getRequestDispatcher("principal/funcionarios.jsp").forward(request, response);
-		
-			
-		}catch(Exception e) {
-			
+
+		} catch (Exception e) {
+
 			e.printStackTrace();
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("erro.jsp");
+			request.setAttribute("msg", e.getMessage());
+			dispatcher.forward(request, response);
 		}
 	}
 

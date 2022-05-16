@@ -38,11 +38,12 @@
               </div>
               <div class="card-body">
                 <form method="post" action="<%= request.getContextPath()%>/ServletFuncionario" id="formUser">
+                    <input type="hidden" name="acao" id="acao" valeu="">
                   <div class="row">
                     <div class="col-md-5 pr-1">
                       <div class="form-group">
                         <label>ID</label>
-                        <input type="text" class="form-control" disabled="" id="idFuncionario" name="idFuncionario" value="${mf.idFuncionario }">
+                        <input type="text" class="form-control" readonly="readonly" id="idFuncionario" name="idFuncionario" value="${mf.idFuncionario }">
                       </div>
                     </div>
                     <div class="col-md-3 px-1">
@@ -127,7 +128,7 @@
                     <div class="update ml-auto mr-auto">
                       <button type="button" class="btn btn-primary btn-round" onclick="limparForm();">Novo</button>
                       <button type="submit" class="btn btn-success btn-round">Cadastrar</button>
-                      <button type="button" class="btn btn-danger btn-round">Excluir</button>
+                      <button type="button" class="btn btn-danger btn-round" onclick="criarDelete();">Excluir</button>
                     </div>
                   </div>
                 </form>
@@ -163,6 +164,13 @@
     		
     		elementos[p].value = '';
     	}
+    }
+    
+    function criarDelete() {
+    	
+    	document.getElementById("formUser").method = "get";
+    	document.getElementById("acao").value = 'deletar';
+    	document.getElementById("formUser").submit();
     }
   
   </script>
