@@ -21,7 +21,7 @@ public class ModelFuncionario implements Serializable{
 	
 	public boolean isNovo() {
 		
-		if(this.idFuncionario == null ) {
+		if(this.idFuncionario == null) {
 			
 			return true; /*Grava um novo*/
 		}

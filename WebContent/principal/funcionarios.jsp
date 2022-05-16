@@ -37,7 +37,7 @@
                 <h5 class="card-title">Cadastro de Funcionarios</h5>
               </div>
               <div class="card-body">
-                <form method="post" action="<%= request.getContextPath()%>/ServletFuncionario">
+                <form method="post" action="<%= request.getContextPath()%>/ServletFuncionario" id="formUser">
                   <div class="row">
                     <div class="col-md-5 pr-1">
                       <div class="form-group">
@@ -125,7 +125,7 @@
                 
                   <div class="row">
                     <div class="update ml-auto mr-auto">
-                      <button type="button" class="btn btn-primary btn-round">Novo</button>
+                      <button type="button" class="btn btn-primary btn-round" onclick="limparForm();">Novo</button>
                       <button type="submit" class="btn btn-success btn-round">Cadastrar</button>
                       <button type="button" class="btn btn-danger btn-round">Excluir</button>
                     </div>
@@ -153,6 +153,19 @@
   <!--   Core JS Files   -->
   <jsp:include page="scripts.jsp"></jsp:include>
   
+  <script type="text/javascript">
+  
+    function limparForm() {
+    	
+    	var elementos = document.getElementById("formUser").elements;
+    	
+    	for(p = 0; p < elementos.length; p++) {
+    		
+    		elementos[p].value = '';
+    	}
+    }
+  
+  </script>
 </body>
 
 </html>

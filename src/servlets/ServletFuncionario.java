@@ -70,6 +70,14 @@ public class ServletFuncionario extends HttpServlet {
 				msg = "Já existe funcionário com o mesmo login, informe outro login";
 			}
 			else {
+				if(mf.isNovo()) {
+					
+					msg = "Gravado com Sucesso";
+				}
+				else {
+					
+					msg = "Atualizado com sucesso";
+				}
 				
 				mf = daoFuncionarioRepository.gravarFuncionario(mf);
 			}
