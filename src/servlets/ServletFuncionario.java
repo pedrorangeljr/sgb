@@ -39,8 +39,22 @@ public class ServletFuncionario extends HttpServlet {
 				request.setAttribute("msg", "Deletado com Sucesso");
 
 			}
+			else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarFuncionarioAjax")) {
+				
+                 String nomeBusca = request.getParameter("nomeBusca");
+				 
+				 System.out.println(nomeBusca);
+				 
+				 //response.getWriter().write("Excluido com sucesso!");
+				 
+				
+			}
+			else {
+				
+				request.getRequestDispatcher("principal/funcionarios.jsp").forward(request, response);
+			}
 
-			request.getRequestDispatcher("principal/funcionarios.jsp").forward(request, response);
+			
 
 		} catch (Exception e) {
 
