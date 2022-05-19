@@ -142,7 +142,7 @@
 											<button type="submit" class="btn btn-success btn-round">Cadastrar</button>
 											<button type="button" class="btn btn-danger btn-round"
 												onclick="criarDelete();">Excluir</button>
-												
+
 											<!-- Button trigger modal -->
 											<button type="button" class="btn btn-dark btn-round"
 												data-toggle="modal" data-target="#exampleModalFuncionario">
@@ -171,28 +171,60 @@
 
 	<!--   Core JS Files   -->
 	<jsp:include page="scripts.jsp"></jsp:include>
-	
+
 	<!-- Modal -->
-<div class="modal fade" id="exampleModalFuncionario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Pesquisa de Funcionários</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-      
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="exampleModalFuncionario" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Pesquisa de
+						Funcionários</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					
+						<div class="input-group mb-3">
+							<input type="text"  class="form-control" id="nomeBusca"
+								placeholder="nome...">
+							<div class="input-group-append">
+								<button type="button" class="input-group-text" onclick="buscarFuncionario();">
+									<i class="nc-icon nc-zoom-split"></i>
+								</button>
+							</div>
+						</div>
+					
+
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        ID
+                      </th>
+                      <th>
+                        Nome
+                      </th>
+                      <th>
+                        Ver
+                      </th>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                  </table>
+                  
+				<div class="modal-footer">
+
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Fechar</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 	<script type="text/javascript">
@@ -216,6 +248,17 @@
 
 			}
 
+		}
+		
+		function buscarFuncionario() {
+			
+			var nomeBusca = document.getElementById("nomeBusca").value;
+			
+			if(nomeBusca != null && nomeBusca != '' && nomeBusca.trim() != '') {
+				
+				alert(nomeBusca);
+			}
+			
 		}
 	</script>
 </body>
