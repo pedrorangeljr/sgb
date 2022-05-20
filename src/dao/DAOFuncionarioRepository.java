@@ -3,6 +3,9 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import connection.SingleConnection;
 import model.ModelFuncionario;
@@ -25,8 +28,9 @@ public class DAOFuncionarioRepository {
 			if(mf.isNovo()) {
 
 			String sql = "insert into TbFuncionario(Nome,Telefone,Cpf,Cep,Logradouro,Numero,Bairro,"
-					+ "Cidade,UF,Senha,Login)values(?,?,?,?,?,?,?,?,?,?,?)";
+					+ "Cidade,UF,Senha,Login)values(?,?,?,?,?,?,?,?,?,?,?);";
 			PreparedStatement insert = connection.prepareStatement(sql);
+
 
 			insert.setString(1, mf.getNome());
 			insert.setString(2, mf.getTelefone());
@@ -36,7 +40,7 @@ public class DAOFuncionarioRepository {
 			insert.setString(6, mf.getNumero());
 			insert.setString(7, mf.getBairro());
 			insert.setString(8, mf.getCidade());
-			insert.setString(9, mf.getUf());
+			insert.setString(19, mf.getUf());
 			insert.setString(10, mf.getSenha());
 			insert.setString(11, mf.getLogin());
             
@@ -49,7 +53,7 @@ public class DAOFuncionarioRepository {
 				
 				String sql = "update TbFuncionario set Nome =?, Telefone =?, Cpf =?, Cep =?,"
 						+ "Logradouro =?, Numero =?, Bairro =?, Cidade =?, UF =?, Senha =?, Login =? "
-						+ "where idFuncinario = "+mf.getIdFuncionario()+"";
+						+ "where idFuncinario = "+mf.getIdFuncionario()+";";
 				PreparedStatement update = connection.prepareStatement(sql);
 				
 				update.setString(1, mf.getNome());
@@ -78,7 +82,43 @@ public class DAOFuncionarioRepository {
 		/* Já faz a consulta depois que grava */
 		return this.consultafuncionario(mf.getLogin());
 	}
+	
+	public List<ModelFuncionario> consultaFuncionarioList(String nome) throws SQLException {
+		
+		List<ModelFuncionario> retorno = new ArrayList<ModelFuncionario>();
+		
+		String sql = "select * from TbFuncionario where upper(Nome) like upper(?)";
+		PreparedStatement consultar = connection.prepareStatement(sql);
+		consultar.setString(1, "%" + nome + "%");
+		
+		ResultSet resultado = consultar.executeQuery();
+		
+		while(resultado.next()) {
+			
+			ModelFuncionario mf = new ModelFuncionario();
+			
+			mf.setIdFuncionario(resultado.getLong("idFuncionario"));
+			mf.setNome(resultado.getString("Nome"));
+			mf.setTelefone(resultado.getString("Telefone"));
+			mf.setCpf(resultado.getString("Cpf"));
+			mf.setCep(resultado.getString("Cep"));
+			mf.setLogradouro(resultado.getString("Logradouro"));
+			mf.setNumero(resultado.getString("Numero"));
+			mf.setBairro(resultado.getString("Bairro"));
+			mf.setCidade(resultado.getString("Cidade"));
+			mf.setUf(resultado.getString("UF"));
+			mf.setSenha(resultado.getString("Senha"));
+			mf.setLogin(resultado.getString("Login"));
+			
+			retorno.add(mf);
+		}
+		
+		
+		return retorno;
+		
+	}
 
+	
 	public ModelFuncionario consultafuncionario(String login) throws Exception {
 
 		ModelFuncionario mf = new ModelFuncionario();

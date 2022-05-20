@@ -265,6 +265,7 @@
 				     data : "nomeBusca=" + nomeBusca + '&acao=buscarFuncionarioAjax',
 				     success: function (response) {
 					 
+				    	 alert(response);
 					 
 				     }
 				     
