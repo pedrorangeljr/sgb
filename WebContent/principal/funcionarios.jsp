@@ -198,8 +198,8 @@
 							</div>
 						</div>
 					
-
-                  <table class="table">
+                  <div style="height: 300px;overflow: scroll">
+                  <table class="table" id="tabelaFunc">
                     <thead class=" text-primary">
                       <th>
                         ID
@@ -215,6 +215,8 @@
                     
                     </tbody>
                   </table>
+                 
+                  </div>
                   
 				<div class="modal-footer">
 
@@ -223,11 +225,13 @@
 
 				</div>
 			</div>
+			 <span id="totalResultado"></span>
 		</div>
 	</div>
 
 
 	<script type="text/javascript">
+	
 		function limparForm() {
 
 			var elementos = document.getElementById("formUser").elements;
@@ -265,7 +269,16 @@
 				     data : "nomeBusca=" + nomeBusca + '&acao=buscarFuncionarioAjax',
 				     success: function (response) {
 					 
-				    	 alert(response);
+				    	var json =  JSON.parse(response);
+				    	 
+				    	 $('#tabelaFunc > tbody > tr').remove();
+				    	 
+				    	 for(var p = 0; p < json.length; p++) {
+				    		 
+				    		 $('#tabelaFunc > tbody').append('<tr> <td>'+json[p].idFuncionario+'</td> <td>'+json[p].nome+'</td> <td><button type="buuton" class="btn btn-warning btn-round">Ver</button></td></tr>');
+				    	 }
+				    	 
+				    	 document.getElementById("totalResultado").textContent = 'Resultados: ' + json.length;
 					 
 				     }
 				     
@@ -275,6 +288,8 @@
 			}
 			
 		}
+		
+		
 	</script>
 </body>
 
