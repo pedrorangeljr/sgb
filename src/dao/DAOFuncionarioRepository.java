@@ -40,7 +40,7 @@ public class DAOFuncionarioRepository {
 			insert.setString(6, mf.getNumero());
 			insert.setString(7, mf.getBairro());
 			insert.setString(8, mf.getCidade());
-			insert.setString(19, mf.getUf());
+			insert.setString(9, mf.getUf());
 			insert.setString(10, mf.getSenha());
 			insert.setString(11, mf.getLogin());
             
