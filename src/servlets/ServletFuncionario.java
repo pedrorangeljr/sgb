@@ -41,27 +41,32 @@ public class ServletFuncionario extends HttpServlet {
 
 				request.setAttribute("msg", "Deletado com Sucesso");
 
-			}
-			else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarFuncionarioAjax")) {
+			} else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarFuncionarioAjax")) {
+
+				String nomeBusca = request.getParameter("nomeBusca");
+
+				List<ModelFuncionario> dadosJsonMf = daoFuncionarioRepository.consultaFuncionarioList(nomeBusca);
+
+				ObjectMapper mapper = new ObjectMapper();
+
+				String json = mapper.writeValueAsString(dadosJsonMf);
+
+				response.getWriter().write(json);
+
+			} else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarEditar")) {
 				
-                 String nomeBusca = request.getParameter("nomeBusca");
-				 
-				 List<ModelFuncionario> dadosJsonMf = daoFuncionarioRepository.consultaFuncionarioList(nomeBusca);
-				 
-				 ObjectMapper mapper = new ObjectMapper();
-				 
-				 String json = mapper.writeValueAsString(dadosJsonMf);
-				 
-				 response.getWriter().write(json);
-				 
+				String idFuncionario = request.getParameter("idFuncionario");
 				
-			}
-			else {
+				ModelFuncionario mf = daoFuncionarioRepository.consultafuncionarioID(idFuncionario);
 				
+				request.setAttribute("msg", "Funcionário em edição");
+				request.setAttribute("mf", mf);
+				request.getRequestDispatcher("principal/funcionarios.jsp").forward(request, response);
+
+			} else {
+
 				request.getRequestDispatcher("principal/funcionarios.jsp").forward(request, response);
 			}
-
-			
 
 		} catch (Exception e) {
 

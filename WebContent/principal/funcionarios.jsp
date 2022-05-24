@@ -232,6 +232,13 @@
 
 	<script type="text/javascript">
 	
+	    function verEditar(idFuncionario) {
+	    	
+	    	var urlAction = document.getElementById('formUser').action;
+	    	
+	    	window.location.href = urlAction + '?acao=buscarEditar&idFuncionario='+idFuncionario;
+	    }
+	
 		function limparForm() {
 
 			var elementos = document.getElementById("formUser").elements;
@@ -275,7 +282,7 @@
 				    	 
 				    	 for(var p = 0; p < json.length; p++) {
 				    		 
-				    		 $('#tabelaFunc > tbody').append('<tr> <td>'+json[p].idFuncionario+'</td> <td>'+json[p].nome+'</td> <td><button type="buuton" class="btn btn-warning btn-round">Ver</button></td></tr>');
+				    		 $('#tabelaFunc > tbody').append('<tr> <td>'+json[p].idFuncionario+'</td> <td>'+json[p].nome+'</td> <td><button onclick="verEditar('+json[p].idFuncionario+')" type="buuton" class="btn btn-warning btn-round">Ver</button></td></tr>');
 				    	 }
 				    	 
 				    	 document.getElementById("totalResultado").textContent = 'Resultados: ' + json.length;

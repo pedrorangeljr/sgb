@@ -1,5 +1,7 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 
  <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-6">
@@ -14,7 +16,9 @@
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">Capacity</p>
-                      <p class="card-title">150GB<p>
+                      <p class="card-title">
+                      
+                      <p>
                     </div>
                   </div>
                 </div>

@@ -146,6 +146,38 @@ public class DAOFuncionarioRepository {
 
 		return mf;
 	}
+	
+	/*Consulta Funcionario por ID*/
+	
+	public ModelFuncionario consultafuncionarioID(String idFuncionario) throws Exception {
+
+		ModelFuncionario mf = new ModelFuncionario();
+
+		String sql = "select * from TbFuncionario where idFuncionario = ?";
+		PreparedStatement consulta = connection.prepareStatement(sql);
+	    
+		consulta.setLong(1, Long.parseLong(idFuncionario));
+
+		ResultSet resultado = consulta.executeQuery();
+
+		while (resultado.next()) {
+
+			mf.setIdFuncionario(resultado.getLong("idFuncionario"));
+			mf.setNome(resultado.getString("Nome"));
+			mf.setTelefone(resultado.getString("Telefone"));
+			mf.setCpf(resultado.getString("Cpf"));
+			mf.setCep(resultado.getString("Cep"));
+			mf.setLogradouro(resultado.getString("Logradouro"));
+			mf.setNumero(resultado.getString("Numero"));
+			mf.setBairro(resultado.getString("Bairro"));
+			mf.setCidade(resultado.getString("Cidade"));
+			mf.setUf(resultado.getString("UF"));
+			mf.setSenha(resultado.getString("Senha"));
+			mf.setLogin(resultado.getString("Login"));
+		}
+
+		return mf;
+	}
 
 	public boolean validaLogin(String login) throws Exception {
 
@@ -172,4 +204,5 @@ public class DAOFuncionarioRepository {
 		
 	}
 
+	 
 }
