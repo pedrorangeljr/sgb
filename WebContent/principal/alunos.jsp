@@ -42,21 +42,21 @@
 										<div class="col-md-5 pr-1">
 											<div class="form-group">
 												<label>ID</label> <input type="text"
-													class="form-control" id="idAluno" name="idAluno">
-				>
+													class="form-control" id="idAluno" name="idAluno" readonly="readonly">
+				                                            
 											</div>
 										</div>
 										<div class="col-md-3 px-1">
 											<div class="form-group">
 												<label>Nome</label> <input type="text" class="form-control"
-													placeholder="name" name="nome" id="" nome>
+													placeholder="name" name="nome" id="nome">
 											</div>
 										</div>
 										<div class="col-md-4 pl-1">
 											<div class="form-group">
 												<label for="exampleInputEmail1">Telefone</label> <input
 													type="email" class="form-control" placeholder="telefone"
-													noma="telefone" id="telefone">
+													name="telefone" id="telefone">
 											</div>
 										</div>
 									</div>
