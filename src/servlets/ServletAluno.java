@@ -8,13 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.DAOAlunoRepository;
 import model.ModelAluno;
 
 
 @WebServlet("/ServletAluno")
 public class ServletAluno extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+     
+	private DAOAlunoRepository daoAlunoRepository = new DAOAlunoRepository();
     
     public ServletAluno() {
         super();
@@ -56,7 +58,9 @@ public class ServletAluno extends HttpServlet {
 			alunos.setCidade(cidade);
 			alunos.setUf(uf);
 			
+			daoAlunoRepository.gravarAlunos(alunos);
 			
+			request.getRequestDispatcher("principal/alunos.jsp").forward(request, response);
 			
 		}catch(Exception e) {
 			
