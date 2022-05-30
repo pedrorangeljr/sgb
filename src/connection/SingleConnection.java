@@ -26,7 +26,7 @@ public class SingleConnection {
 			
 			if(connection == null) {
 				
-				Class.forName("com.mysql.jdbc.Driver");
+				Class.forName("com.mysql.cj.jdbc.Driver");
 				connection = DriverManager.getConnection(url, user, password);
 				connection.setAutoCommit(false);
 			}

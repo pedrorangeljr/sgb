@@ -2,7 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
+import java.sql.ResultSet;
 
 import connection.SingleConnection;
 import model.ModelAluno;
@@ -16,7 +16,7 @@ public class DAOAlunoRepository {
 		connection = SingleConnection.getConnection();
 	}
 	
-	public void gravarAlunos(ModelAluno alunos) {
+	public ModelAluno gravarAlunos(ModelAluno alunos) throws Exception {
 		
 		try {
 			
@@ -43,6 +43,38 @@ public class DAOAlunoRepository {
 			
 			e.printStackTrace();
 		}
+		
+		return this.consultaAluno(alunos.getCpf());
+	}
+	
+	/*Faz a  consulta depois que grava*/
+	
+	public ModelAluno consultaAluno(String cpf) throws Exception{
+		
+		ModelAluno aluno = new ModelAluno();
+		
+		String sql = "select * from TbAluno where upper(Cpf) = upper('"+cpf+"')";
+		PreparedStatement consulta = connection.prepareStatement(sql);
+		
+		ResultSet resultado = consulta.executeQuery();
+		
+		while(resultado.next()) {
+			
+			aluno.setIdAluno(resultado.getLong("idAluno"));
+			aluno.setNome(resultado.getString("Nome"));
+			aluno.setTelefone(resultado.getString("Telefone"));
+			aluno.setCpf(resultado.getString("Cpf"));
+			aluno.setCep(resultado.getString("Cep"));
+			aluno.setLogradouro(resultado.getString("Logradouro"));
+			aluno.setNumero(resultado.getString("Numero"));
+			aluno.setBairro(resultado.getString("Bairro"));
+			aluno.setCidade(resultado.getString("Cidade"));
+			aluno.setUf(resultado.getString("UF"));
+			
+			
+		}
+		
+		return aluno;
 	}
 
 }

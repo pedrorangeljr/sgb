@@ -79,7 +79,7 @@ public class DAOFuncionarioRepository {
 
 		}
 
-		/* JÃ¡ faz a consulta depois que grava */
+		/* faz a consulta depois que grava */
 		return this.consultafuncionario(mf.getLogin());
 	}
 	
@@ -118,7 +118,7 @@ public class DAOFuncionarioRepository {
 		
 	}
 
-	
+	/*Consulta Funcionario por Login*/
 	public ModelFuncionario consultafuncionario(String login) throws Exception {
 
 		ModelFuncionario mf = new ModelFuncionario();
@@ -178,7 +178,7 @@ public class DAOFuncionarioRepository {
 
 		return mf;
 	}
-
+     /*Metodo que não deixa gravar login repetido*/
 	public boolean validaLogin(String login) throws Exception {
 
 		String sql = "select count(1) > 0 as existe from TbFuncionario where upper(login) = upper('" + login + "')";
@@ -192,6 +192,7 @@ public class DAOFuncionarioRepository {
 
 	}
 	
+	/*Metodo deletar funcionário*/
 	public void deletarFuncionario(String idFuncionario) throws Exception {
 		
 		String sql = "delete from TbFuncionario where idFuncionario = ?";

@@ -42,21 +42,21 @@
 										<div class="col-md-5 pr-1">
 											<div class="form-group">
 												<label>ID</label> <input type="text"
-													class="form-control" id="idAluno" name="idAluno" readonly="readonly">
+													class="form-control" id="idAluno" name="idAluno" readonly="readonly" value="${alunos.idAluno }">
 				                                            
 											</div>
 										</div>
 										<div class="col-md-3 px-1">
 											<div class="form-group">
 												<label>Nome</label> <input type="text" class="form-control"
-													placeholder="name" name="nome" id="nome">
+													placeholder="name" name="nome" id="nome" value="${alunos.nome }">
 											</div>
 										</div>
 										<div class="col-md-4 pl-1">
 											<div class="form-group">
 												<label for="exampleInputEmail1">Telefone</label> <input
 													type="text" class="form-control" placeholder="telefone"
-													name="telefone" id="telefone">
+													name="telefone" id="telefone" value="${alunos.telefone }">
 											</div>
 										</div>
 									</div>
@@ -64,13 +64,13 @@
 										<div class="col-md-6 pr-1">
 											<div class="form-group">
 												<label>CPF</label> <input type="text" class="form-control"
-													placeholder="cpf" name="cpf" id="cpf">
+													placeholder="cpf" name="cpf" id="cpf" value="${alunos.cpf }">
 											</div>
 										</div>
 										<div class="col-md-6 pl-1">
 											<div class="form-group">
 												<label>Cep</label> <input type="text" class="form-control"
-													placeholder="cep" name="cep" id="cep">
+													placeholder="cep" name="cep" id="cep" value="${alunos.cep }">
 											</div>
 										</div>
 									</div>
@@ -79,14 +79,14 @@
 											<div class="form-group">
 												<label>Logradouro</label> <input type="text"
 													class="form-control" placeholder="logradouro"
-													name="logradouro" id="logradouro">
+													name="logradouro" id="logradouro" value="${alunos.logradouro }">
 											</div>
 										</div>
 										<div class="col-md-6 pl-1">
 											<div class="form-group">
 												<label>Número</label> <input type="text"
-													class="form-control" placeholder="numero" name="logradouro"
-													id="logradouro">
+													class="form-control" placeholder="numero" name="numero"
+													id="numero" value="${alunos.numero }">
 											</div>
 										</div>
 									</div>
@@ -97,20 +97,20 @@
 											<div class="form-group">
 												<label>Bairro</label> <input type="text"
 													class="form-control" placeholder="bairro" name="bairro"
-													id="bairro">
+													id="bairro" value="${alunos.bairro }">
 											</div>
 										</div>
 										<div class="col-md-4 px-1">
 											<div class="form-group">
 												<label>Cidade</label> <input type="text"
 													class="form-control" placeholder="cidade" name="cidade"
-													id="cidade">
+													id="cidade" value="${alunos.cidade }">
 											</div>
 										</div>
 										<div class="col-md-4 pl-1">
 											<div class="form-group">
 												<label>UF</label> <input type="text" class="form-control"
-													placeholder="uf" name="uf" id="uf">
+													placeholder="uf" name="uf" id="uf" value="${alunos.uf }">
 											</div>
 										</div>
 									</div>

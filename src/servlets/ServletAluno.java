@@ -58,8 +58,8 @@ public class ServletAluno extends HttpServlet {
 			alunos.setCidade(cidade);
 			alunos.setUf(uf);
 			
-			daoAlunoRepository.gravarAlunos(alunos);
-			
+			alunos = daoAlunoRepository.gravarAlunos(alunos);
+			request.setAttribute("alunos", alunos);
 			request.getRequestDispatcher("principal/alunos.jsp").forward(request, response);
 			
 		}catch(Exception e) {
