@@ -44,7 +44,7 @@ public class DAOAlunoRepository {
 			e.printStackTrace();
 		}
 		
-		return this.consultaAluno(alunos.getCpf());
+		return this.consultaAluno(alunos.getCpf()); // chamada do metodo consultar Aluno.
 	}
 	
 	/*Faz a  consulta depois que grava*/

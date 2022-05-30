@@ -71,7 +71,7 @@
 										<div class="col-md-6 pl-1">
 											<div class="form-group">
 												<label>Cep</label> <input type="text" class="form-control"
-													placeholder="cep" name="cep" id="cep" value="${alunos.cep }">
+													placeholder="cep" onblur="pesquisaCep();" name="cep" id="cep" value="${alunos.cep }">
 											</div>
 										</div>
 									</div>
@@ -149,6 +149,26 @@
 	<jsp:include page="scripts.jsp"></jsp:include>
     
     <script type="text/javascript">
+    
+    function pesquisaCep() {
+    	
+    	var cep = $('#cep').val();
+    	
+        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+        	
+        	if(!("erro" in dados)) {
+        		
+        		$('#cep').val(dados.cep);
+        		$("#logradouro").val(dados.logradouro);
+                $("#bairro").val(dados.bairro);
+                $("#cidade").val(dados.localidade);
+                $("#uf").val(dados.uf);
+                
+        	}
+        	
+        });
+    	
+    }
        
         function limparForm() {
         	
