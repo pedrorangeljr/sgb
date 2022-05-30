@@ -77,4 +77,16 @@ public class DAOAlunoRepository {
 		return aluno;
 	}
 
+	/*Metodo deletar aluno*/
+	public void deletarAluno(String idAluno) throws Exception {
+		
+		String sql = "delete from TbAluno where idAluno = ?";
+		PreparedStatement deletar = connection.prepareStatement(sql);
+		
+		deletar.setLong(1, Long.parseLong(idAluno));
+		
+		deletar.executeUpdate();
+		
+		connection.commit();
+	}
 }

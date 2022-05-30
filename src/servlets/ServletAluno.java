@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +27,29 @@ public class ServletAluno extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		try {
+			
+			String acao = request.getParameter("acao");
+			
+			if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("deletar")) {
+				
+				String idAluno = request.getParameter("idAluno");
+				
+				daoAlunoRepository.deletarAluno(idAluno);
+				
+				request.setAttribute("msg", "Deletado com Sucesso");
+			}
+			
+		request.getRequestDispatcher("principal/alunos.jsp").forward(request, response);
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("erro.jsp");
+			request.setAttribute("msg", e.getMessage());
+			dispatcher.forward(request, response);
+		}
 		
 	}
 
@@ -65,6 +89,10 @@ public class ServletAluno extends HttpServlet {
 		}catch(Exception e) {
 			
 			e.printStackTrace();
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("erro.jsp");
+			request.setAttribute("msg", e.getMessage());
+			dispatcher.forward(request, response);
 		}
 	}
 

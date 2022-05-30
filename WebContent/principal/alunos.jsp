@@ -38,6 +38,7 @@
 							</div>
 							<div class="card-body">
 								<form method="post" action="<%= request.getContextPath()%>/ServletAluno" id="formAluno">
+								   <input type="hidden" name="acao" id="acao" valeu="">
 									<div class="row">
 										<div class="col-md-5 pr-1">
 											<div class="form-group">
@@ -127,6 +128,7 @@
 								</form>
 							</div>
 						</div>
+						<span>${msg }</span>
 					</div>
 
 				</div>
@@ -156,6 +158,16 @@
 
 				elementos[p].value = '';
 			}
+        }
+        
+        function criarDelete() {
+        	
+        	if(confirm("Deseja Excluir o Aluno ?")) {
+        		
+        		document.getElementById("formAluno").method = "get";
+        		document.getElementById("acao").value = 'deletar';
+        		document.getElementById("formAluno").submit();
+        	}
         }
     
     </script>
