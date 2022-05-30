@@ -117,7 +117,11 @@
 
 									<div class="row">
 										<div class="update ml-auto mr-auto">
-											<button type="submit" class="btn btn-primary btn-round">Cadastrar</button>
+										<button type="button" class="btn btn-primary btn-round"
+												onclick="limparForm();">Novo</button>
+											<button type="submit" class="btn btn-success btn-round">Cadastrar</button>
+											<button type="button" class="btn btn-danger btn-round"
+												onclick="criarDelete();">Excluir</button>
 										</div>
 									</div>
 								</form>
