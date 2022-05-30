@@ -37,7 +37,7 @@
 								<h5 class="card-title">Cadastro de Alunos</h5>
 							</div>
 							<div class="card-body">
-								<form method="post" action="<%= request.getContextPath()%>/ServletAluno">
+								<form method="post" action="<%= request.getContextPath()%>/ServletAluno" id="formAluno">
 									<div class="row">
 										<div class="col-md-5 pr-1">
 											<div class="form-group">
@@ -145,7 +145,20 @@
 
 	<!--   Core JS Files   -->
 	<jsp:include page="scripts.jsp"></jsp:include>
+    
+    <script type="text/javascript">
+       
+        function limparForm() {
+        	
+        	var elementos = document.getElementById("formAluno").elements;
 
+			for (p = 0; p < elementos.length; p++) {
+
+				elementos[p].value = '';
+			}
+        }
+    
+    </script>
 </body>
 
 </html>
