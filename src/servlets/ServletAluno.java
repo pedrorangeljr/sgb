@@ -58,6 +58,8 @@ public class ServletAluno extends HttpServlet {
 		
 		try {
 			
+			String msg = "Operação realizada com sucesso";
+			
 			String idAluno = request.getParameter("idAluno");
 			String nome = request.getParameter("nome");
 			String telefone = request.getParameter("telefone");
@@ -82,7 +84,18 @@ public class ServletAluno extends HttpServlet {
 			alunos.setCidade(cidade);
 			alunos.setUf(uf);
 			
-			alunos = daoAlunoRepository.gravarAlunos(alunos);
+			if(daoAlunoRepository.validarCpf(alunos.getCpf()) && alunos.getIdAluno() == null) {
+				
+				msg = "Já existe Aluno com o mesmo CPF, informe outro CPF";
+			}
+			else {
+				
+				alunos = daoAlunoRepository.gravarAlunos(alunos);
+				
+			}
+			
+			
+			request.setAttribute("msg", msg);
 			request.setAttribute("alunos", alunos);
 			request.getRequestDispatcher("principal/alunos.jsp").forward(request, response);
 			
