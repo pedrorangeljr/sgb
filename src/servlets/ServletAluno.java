@@ -89,6 +89,14 @@ public class ServletAluno extends HttpServlet {
 				msg = "Já existe Aluno com o mesmo CPF, informe outro CPF";
 			}
 			else {
+				if(alunos.isNovo()) {
+					
+					msg="Gravado co Sucesso";
+				}
+				else {
+					
+					msg="Atualizado com Sucesso";
+				}
 				
 				alunos = daoAlunoRepository.gravarAlunos(alunos);
 				

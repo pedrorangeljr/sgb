@@ -18,8 +18,11 @@ public class DAOAlunoRepository {
 
 	public ModelAluno gravarAlunos(ModelAluno alunos) throws Exception {
 
+		
 		try {
 
+			if(alunos.isNovo()) {
+				
 			String sql = "insert into TbAluno(Nome,Telefone,Cpf,Cep,Logradouro,Numero,Bairro,"
 					+ "Cidade,UF)values(?,?,?,?,?,?,?,?,?)";
 			PreparedStatement insert = connection.prepareStatement(sql);
@@ -37,6 +40,27 @@ public class DAOAlunoRepository {
 			insert.execute();
 
 			connection.commit();
+		}
+			else {
+				
+				String sql = "update TbAluno set Nome=?, Telefone=?, Cpf=?, Cep=?, Logradouro=?, Numero=?,"
+						+ "Bairro=?, Cidade=?, UF=? where idAluno = "+alunos.getIdAluno()+"";
+				PreparedStatement update = connection.prepareStatement(sql);
+				
+				update.setString(1, alunos.getNome());
+				update.setString(2, alunos.getTelefone());
+				update.setString(3, alunos.getCpf());
+				update.setString(4, alunos.getCep());
+				update.setString(5, alunos.getLogradouro());
+				update.setString(6, alunos.getNumero());
+				update.setString(7, alunos.getBairro());
+				update.setString(8, alunos.getCidade());
+				update.setString(9, alunos.getUf());
+				
+				update.executeUpdate();
+				
+				connection.commit();
+			}
 
 		} catch (Exception e) {
 
