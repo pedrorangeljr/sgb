@@ -1,3 +1,6 @@
+<%@ page import="java.sql.*" %>
+<%Class.forName("com.mysql.cj.jdbc.Driver"); %>
+
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -15,9 +18,22 @@
                   </div>
                   <div class="col-7 col-md-8">
                     <div class="numbers">
-                      <p class="card-category">Capacity</p>
+                      <p class="card-category">Funcionário</p>
                       <p class="card-title">
+                      <%
                       
+                      Connection connection = DriverManager.getConnection(
+                              "jdbc:mysql://localhost:3306/sgb?autoReconnect=true", "root", "admin");
+                      Statement statement = connection.createStatement();
+                      
+                      ResultSet resultset = statement.executeQuery("select count(idFuncionario) from TbFuncionario") ;
+                      
+                      while(resultset.next()) {
+                    	  
+                    	 out.println( resultset.getString(1));
+                      }                   
+                      
+                      %>
                       <p>
                     </div>
                   </div>
