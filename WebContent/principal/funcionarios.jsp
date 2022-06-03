@@ -145,7 +145,7 @@
 
 											<!-- Button trigger modal -->
 											<button type="button" class="btn btn-dark btn-round"
-												data-toggle="modal" data-target="#exampleModalFuncionario">
+												data-toggle="modal" data-target="#exampleModalAluno">
 												Pesquisar</button>
 										</div>
 									</div>

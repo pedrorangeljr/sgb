@@ -23,7 +23,7 @@
           </li>
           <li>
             <a href="<%= request.getContextPath()%>/principal/alunos.jsp">
-              <i class="nc-icon nc-diamond"></i>
+              <i class="nc-icon nc-single-02"></i>
               <p>Alunos</p>
             </a>
           </li>

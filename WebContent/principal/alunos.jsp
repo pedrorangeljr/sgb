@@ -37,20 +37,24 @@
 								<h5 class="card-title">Cadastro de Alunos</h5>
 							</div>
 							<div class="card-body">
-								<form method="post" action="<%= request.getContextPath()%>/ServletAluno" id="formAluno">
-								   <input type="hidden" name="acao" id="acao" valeu="">
+								<form method="post"
+									action="<%=request.getContextPath()%>/ServletAluno"
+									id="formAluno">
+									<input type="hidden" name="acao" id="acao" valeu="">
 									<div class="row">
 										<div class="col-md-5 pr-1">
 											<div class="form-group">
-												<label>ID</label> <input type="text"
-													class="form-control" id="idAluno" name="idAluno" readonly="readonly" value="${alunos.idAluno }">
-				                                            
+												<label>ID</label> <input type="text" class="form-control"
+													id="idAluno" name="idAluno" readonly="readonly"
+													value="${alunos.idAluno }">
+
 											</div>
 										</div>
 										<div class="col-md-3 px-1">
 											<div class="form-group">
 												<label>Nome</label> <input type="text" class="form-control"
-													placeholder="name" name="nome" id="nome" value="${alunos.nome }">
+													placeholder="name" name="nome" id="nome"
+													value="${alunos.nome }">
 											</div>
 										</div>
 										<div class="col-md-4 pl-1">
@@ -65,13 +69,15 @@
 										<div class="col-md-6 pr-1">
 											<div class="form-group">
 												<label>CPF</label> <input type="text" class="form-control"
-													placeholder="cpf" name="cpf" id="cpf" value="${alunos.cpf }">
+													placeholder="cpf" name="cpf" id="cpf"
+													value="${alunos.cpf }">
 											</div>
 										</div>
 										<div class="col-md-6 pl-1">
 											<div class="form-group">
 												<label>Cep</label> <input type="text" class="form-control"
-													placeholder="cep" onblur="pesquisaCep();" name="cep" id="cep" value="${alunos.cep }">
+													placeholder="cep" onblur="pesquisaCep();" name="cep"
+													id="cep" value="${alunos.cep }">
 											</div>
 										</div>
 									</div>
@@ -80,7 +86,8 @@
 											<div class="form-group">
 												<label>Logradouro</label> <input type="text"
 													class="form-control" placeholder="logradouro"
-													name="logradouro" id="logradouro" value="${alunos.logradouro }">
+													name="logradouro" id="logradouro"
+													value="${alunos.logradouro }">
 											</div>
 										</div>
 										<div class="col-md-6 pl-1">
@@ -118,11 +125,16 @@
 
 									<div class="row">
 										<div class="update ml-auto mr-auto">
-										<button type="button" class="btn btn-primary btn-round"
+											<button type="button" class="btn btn-primary btn-round"
 												onclick="limparForm();">Novo</button>
 											<button type="submit" class="btn btn-success btn-round">Cadastrar</button>
 											<button type="button" class="btn btn-danger btn-round"
 												onclick="criarDelete();">Excluir</button>
+
+											<!-- Button trigger modal -->
+											<button type="button" class="btn btn-dark btn-round"
+												data-toggle="modal" data-target="#exampleModalAluno">
+												Pesquisar</button>
 										</div>
 									</div>
 								</form>
@@ -147,50 +159,75 @@
 
 	<!--   Core JS Files   -->
 	<jsp:include page="scripts.jsp"></jsp:include>
-    
-    <script type="text/javascript">
-    
-    function pesquisaCep() {
-    	
-    	var cep = $('#cep').val();
-    	
-        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-        	
-        	if(!("erro" in dados)) {
-        		
-        		$('#cep').val(dados.cep);
-        		$("#logradouro").val(dados.logradouro);
-                $("#bairro").val(dados.bairro);
-                $("#cidade").val(dados.localidade);
-                $("#uf").val(dados.uf);
-                
-        	}
-        	
-        });
-    	
-    }
-       
-        function limparForm() {
-        	
-        	var elementos = document.getElementById("formAluno").elements;
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalAluno" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLabelAluno"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabelAluno">Pesquisa
+						de Alunos</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				
+				<div class="modal-body"> Corpo do Modal...</div>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary btn-round"
+						data-dismiss="modal">Close</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function pesquisaCep() {
+
+			var cep = $('#cep').val();
+
+			$.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?",
+					function(dados) {
+
+						if (!("erro" in dados)) {
+
+							$('#cep').val(dados.cep);
+							$("#logradouro").val(dados.logradouro);
+							$("#bairro").val(dados.bairro);
+							$("#cidade").val(dados.localidade);
+							$("#uf").val(dados.uf);
+
+						}
+
+					});
+
+		}
+
+		function limparForm() {
+
+			var elementos = document.getElementById("formAluno").elements;
 
 			for (p = 0; p < elementos.length; p++) {
 
 				elementos[p].value = '';
 			}
-        }
-        
-        function criarDelete() {
-        	
-        	if(confirm("Deseja Excluir o Aluno ?")) {
-        		
-        		document.getElementById("formAluno").method = "get";
-        		document.getElementById("acao").value = 'deletar';
-        		document.getElementById("formAluno").submit();
-        	}
-        }
-    
-    </script>
+		}
+
+		function criarDelete() {
+
+			if (confirm("Deseja Excluir o Aluno ?")) {
+
+				document.getElementById("formAluno").method = "get";
+				document.getElementById("acao").value = 'deletar';
+				document.getElementById("formAluno").submit();
+			}
+		}
+	</script>
 </body>
 
 </html>
