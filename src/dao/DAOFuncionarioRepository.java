@@ -51,8 +51,8 @@ public class DAOFuncionarioRepository {
 			}
 			else {
 				
-				String sql = "update TbFuncionario set Nome =?, Telefone =?, Cpf =?, Cep =?,"
-						+ "Logradouro =?, Numero =?, Bairro =?, Cidade =?, UF =?, Senha =?, Login =? "
+				String sql = "update TbFuncionario set Nome=?, Telefone=?, Cpf=?, Cep=?,"
+						+ "Logradouro=?, Numero=?, Bairro=?, Cidade=?, UF=?, Senha=?, Login=? "
 						+ "where idFuncinario = "+mf.getIdFuncionario()+";";
 				PreparedStatement update = connection.prepareStatement(sql);
 				
@@ -83,6 +83,7 @@ public class DAOFuncionarioRepository {
 		return this.consultafuncionario(mf.getLogin());
 	}
 	
+	/*Metodo de Pesquisa do modal*/
 	public List<ModelFuncionario> consultaFuncionarioList(String nome) throws SQLException {
 		
 		List<ModelFuncionario> retorno = new ArrayList<ModelFuncionario>();

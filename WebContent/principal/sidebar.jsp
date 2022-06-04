@@ -28,7 +28,7 @@
             </a>
           </li>
           <li>
-            <a href="./editora.html">
+            <a href="<%= request.getContextPath()%>/principal/editoras.jsp">
               <i class="nc-icon nc-pin-3"></i>
               <p>Editoras</p>
             </a>
