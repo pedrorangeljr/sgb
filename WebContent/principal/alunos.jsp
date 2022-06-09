@@ -175,11 +175,43 @@
 					</button>
 				</div>
 				
-				<div class="modal-body"> Corpo do Modal...</div>
+				<div class="modal-body">
+				
+				   <div class="input-group mb-3">
+							<input type="text"  class="form-control" id="nomeBusca"
+								placeholder="nome...">
+							<div class="input-group-append">
+								<button type="button" class="input-group-text" onclick="">
+									<i class="nc-icon nc-zoom-split"></i>
+								</button>
+							</div>
+						</div>
+						
+				 <div style="height: 300px;overflow: scroll">
+                  <table class="table" id="tabelaFunc">
+                    <thead class=" text-primary">
+                      <th>
+                        ID
+                      </th>
+                      <th>
+                        Nome
+                      </th>
+                      <th>
+                        Ver
+                      </th>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                  </table>
+                 
+                  </div>
+				
+				</div>
 				
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary btn-round"
-						data-dismiss="modal">Close</button>
+						data-dismiss="modal">Fechar</button>
 
 				</div>
 			</div>
