@@ -40,7 +40,18 @@ public class ServletAluno extends HttpServlet {
 				request.setAttribute("msg", "Deletado com Sucesso");
 			}
 			
-		request.getRequestDispatcher("principal/alunos.jsp").forward(request, response);
+			else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarAlunoAjax")) {
+				
+				String nomeBusca = request.getParameter("nomeBusca");
+				
+				System.out.println(nomeBusca);
+			}
+		
+			else {
+				
+				request.getRequestDispatcher("principal/alunos.jsp").forward(request, response);
+			}
+		
 			
 		}catch(Exception e) {
 			

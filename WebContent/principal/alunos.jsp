@@ -181,7 +181,7 @@
 							<input type="text"  class="form-control" id="nomeBusca"
 								placeholder="nome...">
 							<div class="input-group-append">
-								<button type="button" class="input-group-text" onclick="">
+								<button type="button" class="input-group-text" onclick="buscarAluno();">
 									<i class="nc-icon nc-zoom-split"></i>
 								</button>
 							</div>
@@ -219,6 +219,33 @@
 	</div>
 
 	<script type="text/javascript">
+	
+	    function buscarAluno() {
+	    	
+	    	var nomeBusca = document.getElementById("nomeBusca").value;
+	    	
+	    	if(nomeBusca != null && nomeBusca != '' && nomeBusca.trim() != '') {
+	    		
+	    		var urlAction = document.getElementById('formAluno').action;
+	    		
+	    		 $.ajax({
+	    		     
+	    		     method: "get",
+	    		     url : urlAction,
+	    		     data : "nomeBusca" + nomeBusca + '&acao=buscarAlunoAjax',
+	    		     success: function (response) {
+	    			 
+	    			 
+	    			  
+	    		     }
+	    		     
+	    		 }).fail(function(xhr, status, errorThrown){
+	    		    alert('Erro ao buscar aluno por nome: ' + xhr.responseText);
+	    		 });
+	    		 
+	    	}
+	    }
+	    
 		function pesquisaCep() {
 
 			var cep = $('#cep').val();

@@ -59,7 +59,7 @@ public class ServletFuncionario extends HttpServlet {
 				
 				ModelFuncionario mf = daoFuncionarioRepository.consultafuncionarioID(idFuncionario);
 				
-				request.setAttribute("msg", "Funcionário em edição");
+				request.setAttribute("msg", "Funcionário em edi��o");
 				request.setAttribute("mf", mf);
 				request.getRequestDispatcher("principal/funcionarios.jsp").forward(request, response);
 
