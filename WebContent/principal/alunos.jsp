@@ -178,7 +178,7 @@
 				<div class="modal-body">
 				
 				   <div class="input-group mb-3">
-							<input type="text"  class="form-control" id="nomeBusca"
+							<input type="text"  class="form-control" id="nomeBusca" name="nomeBusca"
 								placeholder="nome...">
 							<div class="input-group-append">
 								<button type="button" class="input-group-text" onclick="buscarAluno();">
@@ -201,6 +201,8 @@
                       </th>
                     </thead>
                     <tbody>
+                    
+                      
                     
                     </tbody>
                   </table>
@@ -225,7 +227,7 @@
 	    	var nomeBusca = document.getElementById("nomeBusca").value;
 	    	
 	    	if(nomeBusca != null && nomeBusca != '' && nomeBusca.trim() != '') {
-	    		
+	    		    		
 	    		var urlAction = document.getElementById('formAluno').action;
 	    		
 	    		 $.ajax({
@@ -235,8 +237,7 @@
 	    		     data : "nomeBusca" + nomeBusca + '&acao=buscarAlunoAjax',
 	    		     success: function (response) {
 	    			 
-	    			 
-	    			  
+	    			     			  
 	    		     }
 	    		     
 	    		 }).fail(function(xhr, status, errorThrown){

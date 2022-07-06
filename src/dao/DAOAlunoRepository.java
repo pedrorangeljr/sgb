@@ -3,6 +3,8 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import connection.SingleConnection;
 import model.ModelAluno;
@@ -69,6 +71,39 @@ public class DAOAlunoRepository {
 
 		return this.consultaAluno(alunos.getCpf()); // chamada do metodo consultar Aluno.
 	}
+	
+	/*Metodo de Pesquisa do Modal*/
+	
+    public List<ModelAluno> consultarAlunoList(String nome) throws Exception{
+    	
+    	List<ModelAluno> retorno = new ArrayList<ModelAluno>();
+    	
+    	String sql = "select * from TbAluno where upper(Nome) like upper(?)";
+    	PreparedStatement consultar = connection.prepareStatement(sql);
+    	consultar.setString(1, "%" + nome + "%");
+    	
+    	ResultSet resultado = consultar.executeQuery();
+    	
+    	while(resultado.next()) {
+    		
+    		ModelAluno aluno = new ModelAluno();
+    		
+    		aluno.setIdAluno(resultado.getLong("idAluno"));
+			aluno.setNome(resultado.getString("Nome"));
+			aluno.setTelefone(resultado.getString("Telefone"));
+			aluno.setCpf(resultado.getString("Cpf"));
+			aluno.setCep(resultado.getString("Cep"));
+			aluno.setLogradouro(resultado.getString("Logradouro"));
+			aluno.setNumero(resultado.getString("Numero"));
+			aluno.setBairro(resultado.getString("Bairro"));
+			aluno.setCidade(resultado.getString("Cidade"));
+			aluno.setUf(resultado.getString("UF"));
+			
+			retorno.add(aluno);
+    	}
+    	
+    	return retorno;
+    }
 
 	/* Faz a consulta depois que grava */
 

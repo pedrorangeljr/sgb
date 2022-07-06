@@ -69,7 +69,7 @@ public class ServletAluno extends HttpServlet {
 		
 		try {
 			
-			String msg = "Operação realizada com sucesso";
+			String msg = "OperaÃ§Ã£o realizada com sucesso";
 			
 			String idAluno = request.getParameter("idAluno");
 			String nome = request.getParameter("nome");
@@ -97,7 +97,7 @@ public class ServletAluno extends HttpServlet {
 			
 			if(daoAlunoRepository.validarCpf(alunos.getCpf()) && alunos.getIdAluno() == null) {
 				
-				msg = "Já existe Aluno com o mesmo CPF, informe outro CPF";
+				msg = "JÃ¡ existe Aluno com o mesmo CPF, informe outro CPF";
 			}
 			else {
 				if(alunos.isNovo()) {
