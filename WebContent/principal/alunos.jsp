@@ -188,7 +188,8 @@
 						</div>
 						
 				 <div style="height: 300px;overflow: scroll">
-                  <table class="table" id="tabelaFunc">
+				 
+                  <table class="table" id="tabelaAluno">
                     <thead class=" text-primary">
                       <th>
                         ID
@@ -220,32 +221,7 @@
 		</div>
 	</div>
 
-	<script type="text/javascript">
-	
-	    function buscarAluno() {
-	    	
-	    	var nomeBusca = document.getElementById("nomeBusca").value;
-	    	
-	    	if(nomeBusca != null && nomeBusca != '' && nomeBusca.trim() != '') {
-	    		    		
-	    		var urlAction = document.getElementById('formAluno').action;
-	    		
-	    		 $.ajax({
-	    		     
-	    		     method: "get",
-	    		     url : urlAction,
-	    		     data : "nomeBusca" + nomeBusca + '&acao=buscarAlunoAjax',
-	    		     success: function (response) {
-	    			 
-	    			     			  
-	    		     }
-	    		     
-	    		 }).fail(function(xhr, status, errorThrown){
-	    		    alert('Erro ao buscar aluno por nome: ' + xhr.responseText);
-	    		 });
-	    		 
-	    	}
-	    }
+	<script type="text/javascript">	  
 	    
 		function pesquisaCep() {
 
@@ -287,6 +263,40 @@
 				document.getElementById("formAluno").submit();
 			}
 		}
+		
+		  function buscarAluno() {
+		    	
+		    	var nomeBusca = document.getElementById('nomeBusca').value;
+		    	
+		    	if(nomeBusca != null && nomeBusca != '' && nomeBusca.trim() != '') {
+		    		    		
+		    		var urlAction = document.getElementById('formAluno').action;
+		    		
+		    		 $.ajax({
+		    		     
+		    		     method: "get",
+		    		     url : urlAction,
+		    		     data : "nomeBusca" + nomeBusca + '&acao=buscarAlunoAjax',
+		    		     success: function (response) {
+		    			 
+		    		    	 var json =  JSON.parse(response);
+		    		    	 
+		    		    	 $('#tabelaAluno > tbody > tr').remove();
+		    		    	 
+		    		    	 for(var p = 0; p < json.length; p++) {
+		    		    		 
+		    		    		 $('#tabelaAluno > tbody').append('<tr> <td>'+json[p].idAluno+'</td> <td>'+json[p].nome+'</td> <td><button onclick="verEditar('+json[p].idAluno+')" type="buuton" class="btn btn-warning btn-round">Ver</button></td></tr>');
+		    		    	 }
+		    			     			  
+		    		     }
+		    		     
+		    		 }).fail(function(xhr, status, errorThrown){
+		    		    alert('Erro ao buscar aluno por nome: ' + xhr.responseText);
+		    		 });
+		    		 
+		    	}
+		    }
+		
 	</script>
 </body>
 

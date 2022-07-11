@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dao.DAOAlunoRepository;
 import model.ModelAluno;
@@ -44,7 +47,14 @@ public class ServletAluno extends HttpServlet {
 				
 				String nomeBusca = request.getParameter("nomeBusca");
 				
-				System.out.println(nomeBusca);
+				List<ModelAluno> dadosJsonAluno =  daoAlunoRepository.consultarAlunoList(nomeBusca);
+				
+				ObjectMapper mapper = new ObjectMapper();
+				
+				String json = mapper.writeValueAsString(dadosJsonAluno);
+				
+				response.getWriter().write(json); 
+				
 			}
 		
 			else {
